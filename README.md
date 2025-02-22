@@ -44,3 +44,10 @@ Mayaウィンドウ上部にYSRigメニューが追加されます。
 13. Distribute Locator
 14. Remove Locator
 15. Hide Utility Node
+
+### 0. 基本的な使い方
+
+<img src="https://github.com/user-attachments/assets/2356eeed-587f-420e-861d-ff5125e9cd48" width="400">  
+
+人形のリグの場合、画像のように骨構造を分割してリグを作成していきます。
+
