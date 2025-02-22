@@ -1,0 +1,36 @@
+{
+    "Search": "JT_",
+    "Replace": "Ctrl_",
+    "FK": [
+        "L_Clavicle",
+        "R_Clavicle",
+        "Hair",
+        "Tail"
+    ],
+    "Spine": [
+        "Spine"
+    ],
+    "Neck": [
+        "Neck"
+    ],
+    "Arm": [
+        "L_Arm",
+        "R_Arm"
+    ],
+    "Leg": [
+        "L_Leg",
+        "R_Leg"
+    ],
+    "Finger": [
+        "L_Thumb",
+        "L_Index",
+        "L_Middle",
+        "L_Ring",
+        "L_Pinky",
+        "R_Thumb",
+        "R_Index",
+        "R_Middle",
+        "R_Ring",
+        "R_Pinky"
+    ]
+}
