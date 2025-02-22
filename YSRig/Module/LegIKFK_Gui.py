@@ -85,7 +85,7 @@ class Gui(QtWidgets.QWidget):
         main_layout.addWidget(label6, 5, 0)
         main_layout.addWidget(self.dropdown03, 5, 1, 1, 2)
 
-        label7 = QtWidgets.QLabel("Knee Vector :")
+        label7 = QtWidgets.QLabel("Knee Direction :")
         label7.setAlignment(QtCore.Qt.AlignRight)
         self.dropdown04 = QtWidgets.QComboBox()
         self.dropdown04.addItems(["Y+", "Y-", "Z+", "Z-"])
@@ -112,14 +112,14 @@ class Gui(QtWidgets.QWidget):
         main_layout.addWidget(label9, 8, 0)
         main_layout.addWidget(self.ik_length_field, 8, 1, 1, 2)
 
-        label10 = QtWidgets.QLabel("Toe Up Vector :")
+        label10 = QtWidgets.QLabel("Toe Up Direction :")
         label10.setAlignment(QtCore.Qt.AlignRight)
         self.dropdown05 = QtWidgets.QComboBox()
         self.dropdown05.addItems(["Y+", "Y-", "Z+", "Z-"])
         main_layout.addWidget(label10, 9, 0)
         main_layout.addWidget(self.dropdown05, 9, 1, 1, 2)
 
-        label11 = QtWidgets.QLabel("Toe Outside Vector :")
+        label11 = QtWidgets.QLabel("Toe Outside Direction :")
         label11.setAlignment(QtCore.Qt.AlignRight)
         self.dropdown06 = QtWidgets.QComboBox()
         self.dropdown06.addItems(["Y+", "Y-", "Z+", "Z-"])

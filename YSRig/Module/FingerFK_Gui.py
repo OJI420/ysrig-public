@@ -99,7 +99,7 @@ class Gui(QtWidgets.QWidget):
         main_layout.addWidget(self.radio1, 6, 1)
         main_layout.addWidget(self.radio2, 6, 2)
 
-        label6 = QtWidgets.QLabel("All Controller Vector :")
+        label6 = QtWidgets.QLabel("All Controller Direction :")
         label6.setAlignment(QtCore.Qt.AlignRight)
         self.dropdown2 = QtWidgets.QComboBox()
         self.dropdown2.addItems(["Y+", "Y-", "Z+", "Z-"])

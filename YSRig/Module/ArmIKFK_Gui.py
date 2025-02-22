@@ -107,7 +107,7 @@ class Gui(QtWidgets.QWidget):
 
         i += 1
 
-        label7 = QtWidgets.QLabel("Elbow Vector :")
+        label7 = QtWidgets.QLabel("Elbow Direction :")
         label7.setAlignment(QtCore.Qt.AlignRight)
         self.dropdown04 = QtWidgets.QComboBox()
         self.dropdown04.addItems(["Y+", "Y-", "Z+", "Z-"])
