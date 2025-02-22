@@ -66,7 +66,10 @@ Mayaウィンドウ上部にYSRigメニューが追加されます。
 必要な情報を入力し実行することで、リグが作成されます。
 画像は**Neck FK**で作成したリグです。  
 
-<img src="https://github.com/user-attachments/assets/01742ace-b473-4e6b-80ca-e34398814d5b" width="400">  
+<img src="https://github.com/user-attachments/assets/01742ace-b473-4e6b-80ca-e34398814d5b" width="600">  
+<img src="https://github.com/user-attachments/assets/a2ea5de7-0842-4b54-8105-23e69d8ef555" width="350">  
 
 大きさはある程度自動でフィットするようになっており、事前に変更することも可能ですが、リグを作ってから大きさを変えたい場合は  
-画像のように、**ControllVertex**モード(F9) で編集してください。
+画像(左)のように、**ControllVertex**モード(F9) で全選択して編集してください。  
+
+また、回転やスケールを編集する際は、画像(右)の矢印部分を**Object**にすることをおすすめします。
