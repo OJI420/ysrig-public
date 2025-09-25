@@ -1,11 +1,11 @@
 import os
 import json
 import math
-from maya import cmds
+from maya import cmds, mel
 import maya.api.OpenMaya as om2
 
 
-VERSION = "2.0.0"
+VERSION = "2.1.0"
 
 this_file = os.path.abspath(__file__)
 prefs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -1912,3 +1912,28 @@ def meta_node_apply_settings(G, data):
     cmds.setAttr(f"{G.grp}.scale", l=False)
     [cmds.setAttr(f"{G.grp}.scale{axis}", l=False) for axis in "XYZ"]
     cmds.setAttr(f"{G.grp}.scale", *scl, l=True)
+
+
+def set_vtx_average_point(guide: str) -> list[float]:
+    """
+    選択しているvertexの平均座標を取得します。
+
+    Args:
+        guide (str): 配置するガイド
+
+    Returns:
+        lsit (float) : 平均座標値(xyz)
+    """
+
+    vtx_list = cmds.ls(sl=True, fl=True)
+
+    if not vtx_list:
+        return
+
+    if not "vtx[" in vtx_list[0]:
+        return
+
+    pos = [cmds.pointPosition(vtx, w=True) for vtx in vtx_list]
+    pos = [sum(p) / len(p) for p in zip(*pos)]
+
+    cmds.move(*pos, guide, ws=True)

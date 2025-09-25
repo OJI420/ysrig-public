@@ -1,7 +1,7 @@
 import importlib
 import maya.cmds as cmds
 import maya.mel as mel
-from ysrig import reload, skeleton_base, ctrl_base, rig_base, guide_editor, export_meta_node, import_meta_node, export_user_settings, import_user_settings, reset_user_settings, help
+from ysrig import reload, skeleton_base, ctrl_base, rig_base, build_manager, export_meta_node, import_meta_node, export_user_settings, import_user_settings, reset_user_settings, help, snap_guide_to_vertex
 from ysrig.modules import chain_basic, root, spine_basic, neck_and_head_basic, shoulder_and_arm_ikfk, leg_and_foot_ikfk, finger_fk, eye_basic, eye_and_simple_eyelid, jaw_basic, biped
 reload.main(chain_basic)
 reload.main(root)
@@ -13,9 +13,10 @@ reload.main(finger_fk)
 reload.main(eye_basic)
 reload.main(eye_and_simple_eyelid)
 reload.main(jaw_basic)
-reload.main(guide_editor)
+reload.main(build_manager)
 reload.main(biped)
 reload.main(help)
+reload.main(snap_guide_to_vertex)
 importlib.reload(skeleton_base)
 importlib.reload(ctrl_base)
 importlib.reload(rig_base)
@@ -71,7 +72,11 @@ def main(ver):
 
     cmds.setParent("..", m=True)
 
-    cmds.menuItem(label="Guide Editor", command=lambda *args: guide_editor.gui.main())
+    cmds.menuItem(label="Editor", subMenu=True, tearOff=True)
+    cmds.menuItem(label="Build Manager", command=lambda *args: build_manager.gui.main())
+    cmds.menuItem(label="Snap Guide To Vertex", command=lambda *args: snap_guide_to_vertex.gui.main())
+
+    cmds.setParent("..", m=True)
 
     cmds.menuItem(label="Import / Export", subMenu=True, tearOff=True)
     cmds.menuItem(label="Export Rig", command=lambda *args: export_meta_node.main())

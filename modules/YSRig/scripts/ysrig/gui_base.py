@@ -1449,3 +1449,63 @@ def simple_md_to_html(md_text):
         html_lines.append("</ul>")
 
     return "\n".join(html_lines)
+
+
+class YSSelecterBox(QtWidgets.QWidget):
+    """
+    ノードを選択して登録できるテキストボックス
+    """
+    def __init__(self, label="", placeholder_text=""):
+        super().__init__()
+        self.is_required = True # ここがTrueだった場合、空でcallされるとエラーにする
+
+        self.main_layout = QtWidgets.QGridLayout(self)
+        self.main_layout.setSpacing(10)
+        self.main_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.sub_layout = QtWidgets.QHBoxLayout(self)
+        self.sub_layout.setSpacing(10)
+        self.sub_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.label = QtWidgets.QLabel(f"{label} :")
+        self.label.setStyleSheet(f"color: rgb({STR_COLOR_1});")
+        self.label.setAlignment(QtCore.Qt.AlignRight)
+
+        self.line_edit = QtWidgets.QLineEdit()
+        self.line_edit.setPlaceholderText(placeholder_text)
+        self.line_edit.setStyleSheet(f"background-color: rgb({BACK_COLOR_1}); color: rgb({STR_COLOR_1});")
+        self.line_edit.setValidator(validator_1)
+
+        self.button = YSPushButton("Set Selected")
+        self.button.clicked.connect(self.call)
+
+        self.sub_layout.addWidget(self.line_edit)
+        self.sub_layout.addWidget(self.button)
+
+        self.main_layout.addWidget(self.label, 0, 0)
+        self.main_layout.addLayout(self.sub_layout, 0, 1, 1, 2)
+
+    def set(self, data):
+        self.line_edit.setText(data)
+
+    def get(self):
+        return self.line_edit.text()
+
+    def connect(self, func):
+        self.line_edit.textChanged.connect(func)
+
+    def error(self):
+        self.label.setStyleSheet(f"color: rgb({ERROR_COLOR});")
+
+    def color_reset(self):
+        self.label.setStyleSheet(f"color: rgb({STR_COLOR_1});")
+
+    def enable(self, input):
+        self.line_edit.setEnabled(input)
+
+    def call(self):
+        sel = cmds.ls(sl=True)
+        if not sel:
+            return
+        
+        self.set(sel[0])
