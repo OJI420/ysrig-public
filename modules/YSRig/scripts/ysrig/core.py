@@ -5,7 +5,7 @@ from maya import cmds, mel
 import maya.api.OpenMaya as om2
 
 
-VERSION = "2.1.0"
+VERSION = "2.1.1"
 
 this_file = os.path.abspath(__file__)
 prefs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
