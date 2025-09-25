@@ -13,6 +13,7 @@ class Guide():
         self.tiptoe = tiptoe
         self.eyelid = eyelid
         self.connect_type = connect_type
+        self.use_finger = finger
 
         self.root()
         self.spine()
@@ -46,7 +47,7 @@ class Guide():
     def arm(self):
         guide = shoulder_and_arm_ikfk.guide.Guide("L_Arm", 0, self.spine_gb, "L_", ["L_Shoulder", "L_UpperArm", "L_ForeArm", "L_Hand"],
                                                 ":".join(shoulder_and_arm_ikfk.gui.IK_CTRL_SHAPE_TYPE), ":".join(shoulder_and_arm_ikfk.gui.PV_CTRL_SHAPE_TYPE))
-        guide.apply_settings(root_matrix=[5, 145, 0, 0, 0, 0, 1], guide_positions=[[10, 0, 0], [50, 0, 0], [75, 0, 0]], connect_type=self.connect_type, twist_joint_count=self.arm_tj_count)
+        guide.apply_settings(root_matrix=[5, 145, 0, 0, 0, 0, 1], guide_positions=[[10, 0, 0], [50, 0, 0], [75, 0, 0]], connect_type=self.connect_type, twist_joint_count=self.arm_tj_count, goal_bone=not self.use_finger)
 
     def finger(self):
         guide = finger_fk.guide.Guide("L_Finger", 0, "L_Hand", "L_", self.finger_names, self.carpal_flags, ":".join(finger_fk.gui.CTRL_SHAPE_TYPE))
