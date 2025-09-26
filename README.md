@@ -9,7 +9,7 @@
 ---
 
 ## インストール手順
-![Image](https://github.com/user-attachments/assets/04ddd46a-4747-495d-b123-69c31917af4b)
+![Image](https://github.com/user-attachments/assets/96f4e792-b0eb-49d3-9a1d-5973a152a547)
 ### インストーラーで自動インストール
 1. Releaseからzipファイルをダウンロードし解凍
 2. setup.batを実行
