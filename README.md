@@ -9,7 +9,7 @@
 ---
 
 ## インストール手順
-
+![Image](https://github.com/user-attachments/assets/9564497b-5df2-41c6-a16b-6904a9c59ffe)
 ### インストーラーで自動インストール
 1. Releaseからzipファイルをダウンロードし解凍
 2. setup.batを実行
@@ -24,10 +24,6 @@
 3. Mayaを起動
 4. **Windiows -> Settings/Preferences -> Plug-in Manager** から **"ysrig_plugin.py"** の **Loaded** と **Auto load** を有効化
 5. Maya上部メニューにYSRigのメニューが追加されます
-
----
-
-![Image](https://github.com/user-attachments/assets/9564497b-5df2-41c6-a16b-6904a9c59ffe)
 
 ---
 **ツールに関する細かいヘルプは、YSRigメニュー -> Help から確認できます。**  
