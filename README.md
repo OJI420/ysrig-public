@@ -27,5 +27,8 @@
 
 ---
 
+![Image](https://github.com/user-attachments/assets/9564497b-5df2-41c6-a16b-6904a9c59ffe)
+
+---
 **ツールに関する細かいヘルプは、YSRigメニュー -> Help から確認できます。**  
 **不明な点や、不具合等ございましたら、 23au0117@jec.ac.jp までご連絡ください。**
