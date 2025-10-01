@@ -1,7 +1,7 @@
 import importlib
 import maya.cmds as cmds
 import maya.mel as mel
-from ysrig import reload, skeleton_base, ctrl_base, rig_base, build_manager, export_meta_node, import_meta_node, export_user_settings, import_user_settings, reset_user_settings, help, snap_guide_to_vertex
+from ysrig import reload, skeleton_base, ctrl_base, rig_base, build_manager, export_meta_node, import_meta_node, export_user_settings, import_user_settings, reset_user_settings, help, snap_guide_to_vertex, picker_editor
 from ysrig.modules import chain_basic, root, spine_basic, neck_and_head_basic, shoulder_and_arm_ikfk, leg_and_foot_ikfk, finger_fk, eye_basic, eye_and_simple_eyelid, jaw_basic, biped
 reload.main(chain_basic)
 reload.main(root)
@@ -17,6 +17,7 @@ reload.main(build_manager)
 reload.main(biped)
 reload.main(help)
 reload.main(snap_guide_to_vertex)
+reload.main(picker_editor)
 importlib.reload(skeleton_base)
 importlib.reload(ctrl_base)
 importlib.reload(rig_base)
@@ -35,7 +36,6 @@ def main(ver):
 
     cmds.menu(MENU, parent=MAINWINDOW, tearOff=True, label=f"- YSRig v{ver} -")
 
-    """デバック用"""
     cmds.menuItem(label="Build Guide", subMenu=True, tearOff=True)
     cmds.menuItem(label="Template", subMenu=True, tearOff=True)
     cmds.menuItem(label="Biped", command=lambda *args: biped.gui.main())
@@ -95,3 +95,5 @@ def main(ver):
 
     cmds.menuItem(divider=True)
     cmds.menuItem(label="Help", command=lambda *args: help.help.main())
+
+    #cmds.menuItem(label="Picker Editor", command=lambda *args: picker_editor.gui.main())
