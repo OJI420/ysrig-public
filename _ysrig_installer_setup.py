@@ -98,8 +98,8 @@ class Window(QtWidgets.QWidget):
         self.page = InstallSuccessPage(self)
 
     @page_update
-    def show_updata_or_uninstall_page(self):
-        self.page = UpdataOrUninstallPage(self)
+    def show_update_or_uninstall_page(self):
+        self.page = UpdateOrUninstallPage(self)
 
     @page_update
     def show_uninstall_page(self):
@@ -110,12 +110,12 @@ class Window(QtWidgets.QWidget):
         self.page = UninstallSuccessPage(self)
 
     @page_update
-    def show_updata_page(self):
-        self.page = UpdataPage(self)
+    def show_update_page(self):
+        self.page = UpdatePage(self)
 
     @page_update
-    def show_updata_success_page(self):
-        self.page = UpdataSuccessPage(self)
+    def show_update_success_page(self):
+        self.page = UpdateSuccessPage(self)
 
 
 class PageBase(QtWidgets.QWidget):
@@ -213,7 +213,7 @@ class InitPage(PageBase):
     def call_next(self):
         install_path = os.path.join(self.line_edit.text(), "YSRig")
         if os.path.isdir(install_path):
-            self.parent.show_updata_or_uninstall_page()
+            self.parent.show_update_or_uninstall_page()
             return
 
         # インストール
@@ -248,7 +248,7 @@ class InstallSuccessPage(PageBase):
         self.parent.deleteLater()
 
 
-class UpdataOrUninstallPage(PageBase):
+class UpdateOrUninstallPage(PageBase):
     def set_button_settings(self):
         self.back_button_label = "Back"
 
@@ -259,10 +259,10 @@ class UpdataOrUninstallPage(PageBase):
         label.setFont(font1)
         label.setStyleSheet(f"color: {LABEL_COLOR};")
 
-        updata_button = QtWidgets.QPushButton("Updata")
-        updata_button.clicked.connect(self.call_updata)
-        updata_button.setFont(font2)
-        updata_button.setStyleSheet(f"background-color: {WIN_COLOR}; color: {BUTTON_COLOR2}; border-radius: 1px;")
+        update_button = QtWidgets.QPushButton("Update")
+        update_button.clicked.connect(self.call_update)
+        update_button.setFont(font2)
+        update_button.setStyleSheet(f"background-color: {WIN_COLOR}; color: {BUTTON_COLOR2}; border-radius: 1px;")
 
         uninstall_button = QtWidgets.QPushButton("Uninstall")
         uninstall_button.clicked.connect(self.call_uninstall)
@@ -270,14 +270,14 @@ class UpdataOrUninstallPage(PageBase):
         uninstall_button.setStyleSheet(f"background-color: {WIN_COLOR}; color: {BUTTON_COLOR3}; border-radius: 1px;")
 
         self.dialog_layout.addWidget(label)
-        self.dialog_layout.addWidget(updata_button)
+        self.dialog_layout.addWidget(update_button)
         self.dialog_layout.addWidget(uninstall_button)
 
     def call_back(self):
         self.parent.show_install_path_page()
 
-    def call_updata(self):
-        self.parent.show_updata_page()
+    def call_update(self):
+        self.parent.show_update_page()
 
     def call_uninstall(self):
         self.parent.show_uninstall_page()
@@ -310,7 +310,7 @@ class UninstallPage(PageBase):
         self.parent.show_uninstall_success_page()
 
     def call_back(self):
-        self.parent.show_updata_or_uninstall_page()
+        self.parent.show_update_or_uninstall_page()
 
 
 class UninstallSuccessPage(PageBase):
@@ -330,9 +330,9 @@ class UninstallSuccessPage(PageBase):
         self.parent.deleteLater()
 
 
-class UpdataPage(PageBase):
+class UpdatePage(PageBase):
     def set_button_settings(self):
-        self.next_button_label = "Updata"
+        self.next_button_label = "Update"
         self.back_button_label = "Back"
 
     def dialog(self):
@@ -349,7 +349,7 @@ class UpdataPage(PageBase):
         self.dialog_layout.addWidget(self.checkbox, 0, 3, 1, 2)
 
     def call_back(self):
-        self.parent.show_updata_or_uninstall_page()
+        self.parent.show_update_or_uninstall_page()
 
     def call_next(self):
         install_path = self.parent.install_path
@@ -377,10 +377,10 @@ class UpdataPage(PageBase):
             import_(tmp_settings_file, ysrig_install_dir)
 
         os.remove(tmp_settings_file)
-        self.parent.show_updata_success_page()
+        self.parent.show_update_success_page()
 
 
-class UpdataSuccessPage(PageBase):
+class UpdateSuccessPage(PageBase):
     def set_button_settings(self):
         self.next_button_label = "OK"
 
