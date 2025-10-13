@@ -462,4 +462,9 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     win = Window()
     win.show()
-    sys.exit(app.exec())
+
+    if int(maya_ver) <= 2024:
+        sys.exit(app.exec_())
+
+    elif int(maya_ver) >= 2025:
+        sys.exit(app.exec())
