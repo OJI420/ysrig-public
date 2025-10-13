@@ -96,4 +96,4 @@ def main(ver):
     cmds.menuItem(divider=True)
     cmds.menuItem(label="Help", command=lambda *args: help.help.main())
 
-    cmds.menuItem(label="Picker Editor", command=lambda *args: picker_editor.gui.main())
+    #cmds.menuItem(label="Picker Editor", command=lambda *args: picker_editor.gui.main())
