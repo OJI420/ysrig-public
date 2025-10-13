@@ -13,7 +13,7 @@ if int(maya_ver) <= 2024:
 elif int(maya_ver) >= 2025:
     from PySide6 import QtWidgets, QtCore, QtGui
 
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 
 MAYA_DOC_PATH = os.path.join(os.path.expanduser("~"), "Documents", "maya")
 MAYA_MOD_PATH = os.path.join(MAYA_DOC_PATH, "modules")
