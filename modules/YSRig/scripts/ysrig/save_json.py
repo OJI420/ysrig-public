@@ -29,23 +29,23 @@ save_json.save_shape()
 
 def save_button_shape():
     savefile = os.path.join(path, "prefs", "ysrig", "button_shape.json")
-    data = {}
-    selection = cmds.ls(sl=True)
+    mod = {}
 
-    for sel in selection:
-        cv = cmds.listRelatives(sel, s=True)[0]
-        cv_pos = []
+    sels = cmds.ls(sl=True)
+    for sel in sels:
+        mod[sel] = {}
+        shapes = cmds.listRelatives(sel, c=True)
+        for shape in shapes:
+            mod[sel][shape] = {}
+            mod[sel][shape]["pos"] = [cmds.getAttr(f"{shape}.translateX"), cmds.getAttr(f"{shape}.translateZ")]
+            mod[sel][shape]["cvs"] = []
 
-        for i in range(cmds.getAttr(f"{cv}.controlPoints", size=True)):
-            pos = cmds.getAttr(f"{cv}.controlPoints[{i}]")[0]
-            cv_pos.append([pos[0], pos[2]])
+            cv = cmds.listRelatives(shape, s=True)[0]
+            for i in range(cmds.getAttr(f"{cv}.controlPoints", size=True)):
+                mod[sel][shape]["cvs"] += [cmds.getAttr(f"{cv}.controlPoints[{i}]")[0]]
 
-        data[sel] = cv_pos
-        data[f"{sel}_Uniform_Scale"] = cmds.getAttr("%s.displayRotatePivot"%(sel))
-        
     with open(savefile, "w") as f:
-        json.dump(data, f, indent=4)
-
+        json.dump(mod, f, indent=4)
 """
 from ysrig import save_json
 save_json.save_button_shape()

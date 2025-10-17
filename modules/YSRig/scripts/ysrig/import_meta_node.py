@@ -52,4 +52,5 @@ def main():
 
     for attr in attrs:
         cmds.setAttr(attr[0], l=False)
-        cmds.setAttr(*attr, l=True, type="string")
+        if attr[1]:
+            cmds.setAttr(*attr, l=True, type="string")
